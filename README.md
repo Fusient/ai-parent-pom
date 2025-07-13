@@ -1,6 +1,5 @@
 # AI Parent POM - Gradle 版本
 
-这是从 Maven 父 POM 转换而来的 Gradle 父项目，用于统一管理依赖版本。
 
 ## 项目信息
 
