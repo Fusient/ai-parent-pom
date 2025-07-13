@@ -1,0 +1,394 @@
+plugins {
+    id 'java-platform'
+    id 'maven-publish'
+    id 'signing'
+}
+
+group = 'com.ijson.ai'
+version = '1.0.0-SNAPSHOT'
+description = 'ai-parent-pom'
+
+// 项目属性配置
+ext {
+    // 应用相关
+    javaVersion = '1.8'
+    jdkVersion = '1.8'
+    warName = 'IJSON'
+    webAppContextPath = ''
+    skipMavenDeploy = false
+    projectBuildSourceEncoding = 'UTF-8'
+
+    // 日志
+    lombokVersion = '1.18.18'
+    logbackVersion = '1.2.3'
+    slf4jVersion = '1.7.21'
+    logbackExtSpringVersion = '0.1.4'
+
+    // commons
+    commonsIoVersion = '2.7'
+    commonsCollectionsVersion = '3.2.2'
+    httpclientVersion = '4.5.13'
+    springVersion = '5.1.8.RELEASE'
+    springMvcVersion = '5.1.8.RELEASE'
+    junitVersion = '4.13.1'
+    fastjsonVersion = '1.2.47'
+    xstreamVersion = '1.4.17'
+    jedisVersion = '2.8.1'
+    commonsPool2Version = '2.3'
+    commonsCodecVersion = '1.10'
+    commonsBeanutilsVersion = '1.9.4'
+    commonsLang3Version = '3.4'
+    commonsLangVersion = '2.6'
+    commonsLoggingVersion = '1.2'
+    commonsFileuploadVersion = '1.3.3'
+    commonsConfigurationVersion = '1.10'
+    commonsTextVersion = '1.8'
+
+    // spring
+    springDataMongodbVersion = '3.1.1'
+    springRetryVersion = '1.3.0'
+    springBootVersion = '2.1.6.RELEASE'
+
+    // 测试类库
+    spockVersion = '1.0-groovy-2.4'
+    groovyAllVersion = '2.5.2'
+    cglibVersion = '3.1'
+    objenesisVersion = '2.5.1'
+    tess4jVersion = '4.5.4'
+    junitJupiterVersion = '5.7.0'
+    hamcrestVersion = '1.3'
+    mockitoVersion = '1.10.19'
+
+    // http 请求
+    okhttpVersion = '2.7.4'
+    okhttp3Version = '3.3.1'
+
+    // 数据库相关
+    mysqlVersion = '8.0.16'
+    druidVersion = '1.1.2'
+    mybatisVersion = '3.5.6'
+    mybatisSpringVersion = '1.3.0'
+    hibernateVersion = '4.3.0.Final'
+    mongoJavaDriverVersion = '3.12.7'
+    mongodbDriverVersion = '4.2.3'
+    morphiaVersion = '1.1.1'
+
+    // 模板引擎
+    beetlVersion = '2.7.22'
+    beetlFrameworkStarterVersion = '1.2.6.RELEASE'
+    velocityToolsVersion = '2.0'
+    jetbrickTemplateVersion = '2.1.2'
+
+    // 服务器框架
+    nettyVersion = '4.1.44.Final'
+    jbossNettyVersion = '3.2.10.Final'
+    jettyVersion = '9.3.8.v20160314'
+    jettyServerVersion = '11.0.1'
+
+    // WEB及RESTFUL
+    servletVersion = '3.1.0'
+    jbossResteasyVersion = '3.0.19.Final'
+    jerseySpringVersion = '1.8'
+
+    // 缓存
+    redissonVersion = '3.14.1'
+    ehcacheVersion = '2.10.6'
+
+    // 安全框架
+    casClientCoreVersion = '3.4.1'
+    shiroVersion = '1.7.1'
+    esapiVersion = '2.1.0'
+
+    // mq
+    rocketmqVersion = '3.2.6'
+
+    // 爬虫
+    crawler4jVersion = '4.4.0'
+    jsoupVersion = '1.12.1'
+
+    // 邮件
+    mailVersion = '1.4.7'
+
+    // 时间处理工具
+    jodaTimeVersion = '2.9.3'
+    aspectjVersion = '1.8.7'
+    asmVersion = '3.3.1'
+    jschVersion = '0.1.53'
+    persistenceApiVersion = '1.0.2'
+    guavaVersion = '29.0-jre'
+    antlr4RuntimeVersion = '4.7.2'
+    kafkaClientsVersion = '0.9.0.1'
+    zookeeperVersion = '3.4.14'
+    curatorVersion = '2.9.0'
+    dubboVersion = '2.9.2-SNAPSHOT'
+    jodaConvertVersion = '1.8.1'
+    jsr305Version = '3.0.1'
+    assertjVersion = '3.4.0'
+    elasticJobVersion = '1.1.0'
+    jstlVersion = '1.2'
+    aopallianceVersion = '1.0'
+    bitwalkerVersion = '1.20'
+
+    quartzVersion = '2.3.2'
+    pinyin4jVersion = '2.5.1'
+    javaOcrApiVersion = '15.3.0.3'
+    jnaVersion = '5.5.0'
+    metadataExtractorVersion = '2.14.0'
+    hutoolAllVersion = '5.4.4'
+    oshiCoreVersion = '3.4.4'
+    urlrewritefilterVersion = '4.0.4'
+
+    // RSS框架
+    romeVersion = '1.14.1'
+
+    // 序列化及对象操作
+    gsonVersion = '2.6.2'
+    jacksonVersion = '2.9.10'
+    jacksonDatabindVersion = '2.9.10.7'
+    jacksonAslVersion = '1.9.13'
+    orikaVersion = '1.4.6'
+    javassistVersion = '3.20.0-GA'
+}
+
+// 依赖管理 - 对应Maven的dependencyManagement
+dependencies {
+    constraints {
+        // MongoDB
+        api "org.mongodb:mongodb-driver-core:$mongodbDriverVersion"
+        api "org.mongodb:mongodb-driver-sync:$mongodbDriverVersion"
+        api "org.mongodb:mongo-java-driver:$mongoJavaDriverVersion"
+        api "org.mongodb.morphia:morphia:$morphiaVersion"
+
+        // RSS框架
+        api "com.rometools:rome:$romeVersion"
+
+        // 工具类
+        api "cn.hutool:hutool-all:$hutoolAllVersion"
+        api "com.github.oshi:oshi-core:$oshiCoreVersion"
+        api "com.drewnoakes:metadata-extractor:$metadataExtractorVersion"
+
+        // 爬虫
+        api "edu.uci.ics:crawler4j:$crawler4jVersion"
+        api "org.jsoup:jsoup:$jsoupVersion"
+
+        // 序列化及对象操作
+        api "com.google.code.gson:gson:$gsonVersion"
+        api "com.fasterxml.jackson.core:jackson-core:$jacksonVersion"
+        api "com.fasterxml.jackson.core:jackson-databind:$jacksonDatabindVersion"
+        api "org.codehaus.jackson:jackson-mapper-asl:$jacksonAslVersion"
+        api "ma.glasnost.orika:orika-core:$orikaVersion"
+        api "org.javassist:javassist:$javassistVersion"
+
+        // 模板引擎
+        api "com.ibeetl:beetl-framework-starter:$beetlFrameworkStarterVersion"
+        api "com.ibeetl:beetl:$beetlVersion"
+        api "org.apache.velocity:velocity-tools:$velocityToolsVersion"
+        api "com.github.subchen:jetbrick-template:$jetbrickTemplateVersion"
+
+        // 邮件
+        api "javax.mail:mail:$mailVersion"
+
+        // 定时任务
+        api "org.quartz-scheduler:quartz:$quartzVersion"
+
+        // 工具库
+        api "com.belerweb:pinyin4j:$pinyin4jVersion"
+        api "net.java.dev.jna:jna:$jnaVersion"
+        api "org.tuckey:urlrewritefilter:$urlrewritefilterVersion"
+
+        // 数据库
+        api "mysql:mysql-connector-java:$mysqlVersion"
+        api "com.alibaba:druid:$druidVersion"
+        api "org.mybatis:mybatis:$mybatisVersion"
+        api "org.mybatis:mybatis-spring:$mybatisSpringVersion"
+
+        // Hibernate
+        api "org.hibernate:hibernate-core:$hibernateVersion"
+
+        // Spring Framework
+        api "org.springframework:spring-core:$springVersion"
+        api "org.springframework:spring-context:$springVersion"
+        api "org.springframework:spring-beans:$springVersion"
+        api "org.springframework:spring-aop:$springVersion"
+        api "org.springframework:spring-aspects:$springVersion"
+        api "org.springframework:spring-context-support:$springVersion"
+        api "org.springframework:spring-expression:$springVersion"
+        api "org.springframework:spring-instrument:$springVersion"
+        api "org.springframework:spring-jdbc:$springVersion"
+        api "org.springframework:spring-jms:$springVersion"
+        api "org.springframework:spring-messaging:$springVersion"
+        api "org.springframework:spring-orm:$springVersion"
+        api "org.springframework:spring-oxm:$springVersion"
+        api "org.springframework:spring-test:$springVersion"
+        api "org.springframework:spring-tx:$springVersion"
+        api "org.springframework:spring-web:$springVersion"
+        api "org.springframework:spring-webmvc:$springMvcVersion"
+        api "org.springframework:spring-websocket:$springVersion"
+
+        // Spring Data
+        api "org.springframework.data:spring-data-mongodb:$springDataMongodbVersion"
+        api "org.springframework.retry:spring-retry:$springRetryVersion"
+
+        // Spring Boot
+        api "org.springframework.boot:spring-boot:$springBootVersion"
+        api "org.springframework.boot:spring-boot-starter:$springBootVersion"
+        api "org.springframework.boot:spring-boot-starter-web:$springBootVersion"
+        api "org.springframework.boot:spring-boot-starter-test:$springBootVersion"
+
+        // 日志
+        api "org.projectlombok:lombok:$lombokVersion"
+        api "ch.qos.logback:logback-classic:$logbackVersion"
+        api "ch.qos.logback:logback-core:$logbackVersion"
+        api "org.slf4j:slf4j-api:$slf4jVersion"
+        api "org.slf4j:jcl-over-slf4j:$slf4jVersion"
+        api "org.slf4j:jul-to-slf4j:$slf4jVersion"
+        api "org.slf4j:log4j-over-slf4j:$slf4jVersion"
+        api "org.logback-extensions:logback-ext-spring:$logbackExtSpringVersion"
+
+        // Commons
+        api "commons-io:commons-io:$commonsIoVersion"
+        api "commons-collections:commons-collections:$commonsCollectionsVersion"
+        api "org.apache.httpcomponents:httpclient:$httpclientVersion"
+        api "redis.clients:jedis:$jedisVersion"
+        api "org.apache.commons:commons-pool2:$commonsPool2Version"
+        api "commons-codec:commons-codec:$commonsCodecVersion"
+        api "commons-beanutils:commons-beanutils:$commonsBeanutilsVersion"
+        api "org.apache.commons:commons-lang3:$commonsLang3Version"
+        api "commons-lang:commons-lang:$commonsLangVersion"
+        api "commons-logging:commons-logging:$commonsLoggingVersion"
+        api "commons-fileupload:commons-fileupload:$commonsFileuploadVersion"
+        api "commons-configuration:commons-configuration:$commonsConfigurationVersion"
+        api "org.apache.commons:commons-text:$commonsTextVersion"
+
+        // JSON处理
+        api "com.alibaba:fastjson:$fastjsonVersion"
+        api "com.thoughtworks.xstream:xstream:$xstreamVersion"
+
+        // HTTP客户端
+        api "com.squareup.okhttp:okhttp:$okhttpVersion"
+        api "com.squareup.okhttp3:okhttp:$okhttp3Version"
+
+        // 缓存
+        api "org.redisson:redisson:$redissonVersion"
+        api "net.sf.ehcache:ehcache:$ehcacheVersion"
+
+        // 安全框架
+        api "org.jasig.cas.client:cas-client-core:$casClientCoreVersion"
+        api "org.apache.shiro:shiro-core:$shiroVersion"
+        api "org.apache.shiro:shiro-web:$shiroVersion"
+        api "org.apache.shiro:shiro-spring:$shiroVersion"
+        api "org.owasp.esapi:esapi:$esapiVersion"
+
+        // 消息队列
+        api "com.alibaba.rocketmq:rocketmq-client:$rocketmqVersion"
+
+        // 服务器框架
+        api "io.netty:netty-all:$nettyVersion"
+        api "org.jboss.netty:netty:$jbossNettyVersion"
+        api "org.eclipse.jetty:jetty-server:$jettyVersion"
+
+        // Web相关
+        api "javax.servlet:javax.servlet-api:$servletVersion"
+        api "org.jboss.resteasy:resteasy-jaxrs:$jbossResteasyVersion"
+        api "com.sun.jersey.contribs:jersey-spring:$jerseySpringVersion"
+
+        // 时间处理
+        api "joda-time:joda-time:$jodaTimeVersion"
+        api "org.joda:joda-convert:$jodaConvertVersion"
+
+        // 其他工具
+        api "org.aspectj:aspectjweaver:$aspectjVersion"
+        api "asm:asm:$asmVersion"
+        api "com.jcraft:jsch:$jschVersion"
+        api "javax.persistence:persistence-api:$persistenceApiVersion"
+        api "com.google.guava:guava:$guavaVersion"
+        api "org.antlr:antlr4-runtime:$antlr4RuntimeVersion"
+        api "org.apache.kafka:kafka-clients:$kafkaClientsVersion"
+        api "org.apache.zookeeper:zookeeper:$zookeeperVersion"
+        api "org.apache.curator:curator-framework:$curatorVersion"
+        api "com.alibaba:dubbo:$dubboVersion"
+        api "com.google.code.findbugs:jsr305:$jsr305Version"
+        api "com.dangdang:elastic-job-core:$elasticJobVersion"
+        api "com.dangdang:elastic-job-spring:$elasticJobVersion"
+        api "javax.servlet:jstl:$jstlVersion"
+        api "aopalliance:aopalliance:$aopallianceVersion"
+        api "eu.bitwalker:UserAgentUtils:$bitwalkerVersion"
+
+        // 测试框架
+        api "junit:junit:$junitVersion"
+        api "org.junit.jupiter:junit-jupiter:$junitJupiterVersion"
+        api "org.spockframework:spock-core:$spockVersion"
+        api "org.spockframework:spock-spring:$spockVersion"
+        api "org.codehaus.groovy:groovy-all:$groovyAllVersion"
+        api "org.hamcrest:hamcrest-core:$hamcrestVersion"
+        api "org.mockito:mockito-all:$mockitoVersion"
+        api "cglib:cglib-nodep:$cglibVersion"
+        api "cglib:cglib:$cglibVersion"
+        api "org.objenesis:objenesis:$objenesisVersion"
+        api "org.assertj:assertj-core:$assertjVersion"
+        api "net.sourceforge.tess4j:tess4j:$tess4jVersion"
+    }
+}
+
+// 配置发布
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.javaPlatform
+
+            pom {
+                name = 'ai-parent-pom'
+                description = 'ai-parent-pom'
+                url = 'https://www.ijson.com'
+
+                licenses {
+                    license {
+                        name = 'The Apache Software License, Version 2.0'
+                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                        distribution = 'repo'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id = 'cuiyongxu'
+                        name = 'cuiyongxu'
+                        email = 'cuiyongxu@gmail.com'
+                        url = 'https://www.ijson.net'
+                    }
+                }
+
+                scm {
+                    url = 'https://github.com/icuiyongxu/ai-parent-pom'
+                    connection = 'scm:git:git@github.com:icuiyongxu/ai-parent-pom.git'
+                    developerConnection = 'scm:git:git@github.com:icuiyongxu/ai-parent-pom.git'
+                    tag = 'ai-parent-pom-1.0.0'
+                }
+            }
+        }
+    }
+
+    repositories {
+        maven {
+            name = 'sonatype'
+            def releasesRepoUrl = 'https://oss.sonatype.org/service/local/staging/deploy/maven2/'
+            def snapshotsRepoUrl = 'https://oss.sonatype.org/content/repositories/snapshots/'
+            url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+
+            credentials {
+                username = project.findProperty('ossrhUsername') ?: System.getenv('OSSRH_USERNAME')
+                password = project.findProperty('ossrhPassword') ?: System.getenv('OSSRH_PASSWORD')
+            }
+        }
+    }
+}
+
+// 配置签名
+signing {
+    sign publishing.publications.maven
+}
+
+// 只有在发布时才进行签名
+tasks.withType(Sign) {
+    onlyIf { gradle.taskGraph.hasTask(publish) }
+}
