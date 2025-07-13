@@ -359,9 +359,9 @@ publishing {
                 }
 
                 scm {
-                    url = 'https://github.com/icuiyongxu/ai-parent-pom'
-                    connection = 'scm:git:git@github.com:icuiyongxu/ai-parent-pom.git'
-                    developerConnection = 'scm:git:git@github.com:icuiyongxu/ai-parent-pom.git'
+                    url = 'https://github.com/Fusient/ai-parent-pom'
+                    connection = 'scm:git:git@github.com:Fusient/ai-parent-pom.git'
+                    developerConnection = 'scm:git:git@github.com:Fusient/ai-parent-pom.git'
                     tag = 'ai-parent-pom-1.0.0'
                 }
             }
