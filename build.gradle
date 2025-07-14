@@ -4,7 +4,7 @@ plugins {
     id 'signing'
 }
 
-group = 'com.ijson.ai'
+group = 'com.ijson.platform'
 version = '1.0.0-SNAPSHOT'
 description = 'ijson-platform-pom'
 
