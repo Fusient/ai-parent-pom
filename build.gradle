@@ -6,7 +6,7 @@ plugins {
 
 group = 'com.ijson.ai'
 version = '1.0.0-SNAPSHOT'
-description = 'ai-parent-pom'
+description = 'ijson-platform-pom'
 
 // 项目属性配置
 ext {
@@ -337,8 +337,8 @@ publishing {
             from components.javaPlatform
 
             pom {
-                name = 'ai-parent-pom'
-                description = 'ai-parent-pom'
+                name = 'ijson-platform-pom'
+                description = 'ijson-platform-pom'
                 url = 'https://www.ijson.com'
 
                 licenses {
@@ -359,10 +359,10 @@ publishing {
                 }
 
                 scm {
-                    url = 'https://github.com/Fusient/ai-parent-pom'
-                    connection = 'scm:git:git@github.com:Fusient/ai-parent-pom.git'
-                    developerConnection = 'scm:git:git@github.com:Fusient/ai-parent-pom.git'
-                    tag = 'ai-parent-pom-1.0.0'
+                    url = 'https://github.com/ijson-projects/ijson-platform-pom'
+                    connection = 'scm:git:git@github.com:ijson-projects/ijson-platform-pom.git'
+                    developerConnection = 'scm:git:git@github.com:ijson-projects/ijson-platform-pom.git'
+                    tag = 'ijson-platform-pom-1.0.0'
                 }
             }
         }

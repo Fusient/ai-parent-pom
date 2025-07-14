@@ -1,12 +1,11 @@
 # AI Parent POM - Gradle 版本
 
-
 ## 项目信息
 
 - **Group ID**: com.ijson.ai
-- **Artifact ID**: ai-parent-pom
+- **Artifact ID**: ijson-platform-pom
 - **Version**: 1.0.0-SNAPSHOT
-- **Description**: ai-parent-pom
+- **Description**: ijson-platform-pom
 
 ## 主要功能
 
@@ -43,7 +42,7 @@ plugins {
 
 // 导入父项目的依赖版本管理
 dependencies {
-    implementation platform('com.ijson.ai:ai-parent-pom:1.0.0-SNAPSHOT')
+    implementation platform('com.ijson.ai:ijson-platform-pom:1.0.0-SNAPSHOT')
 
     // 现在可以不指定版本号，会自动使用父项目管理的版本
     implementation 'org.springframework:spring-core'

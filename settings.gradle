@@ -1,4 +1,4 @@
-rootProject.name = 'ai-parent-pom'
+rootProject.name = 'ijson-platform-pom'
 
 // 如果有子模块，在这里添加
 // include 'module1', 'module2'
